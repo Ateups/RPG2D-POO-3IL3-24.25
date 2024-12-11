@@ -1,20 +1,27 @@
 package object;
 
-import java.io.IOException;
+import entity.Entity;
+import projetpoogame.GamePanel;
 
-import javax.imageio.ImageIO;
-
-public class OBJ_Key extends SuperObject{
+public class OBJ_Key extends Entity{
 	
-	public OBJ_Key() {
+//	GamePanel gp;
+	public OBJ_Key(GamePanel gp) {
+		super(gp);
+//		this.gp = gp;
 		
 		name = "key";
-		try {
-			image = ImageIO.read(getClass().getResourceAsStream("/objects/key.png"));
-		}catch(IOException e) {
-			e.printStackTrace();
-		}
-		solidArea.x = 5;
+		down1 = setup("/objects/key", gp.tilesize, gp.tilesize);
+		
+//		try {
+//			image = ImageIO.read(getClass().getResourceAsStream("/objects/key.png"));
+//			uTool.scaleImage(image, gp.tilesize, gp.tilesize);
+//		
+//		}catch(IOException e) {
+//			e.printStackTrace();
+//		}
+		
+//		collision = true;
 	}
 	
 }
