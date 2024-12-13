@@ -28,11 +28,28 @@ public class NPC_OldMan extends Entity{
 	    	right2 = setup("/npc/oldman_right_2", gp.tilesize, gp.tilesize);
 	    }
 	 public void setDialogue() {
-		 dialogue[0] = "Hello.....\n, t'es au courant pour le tresor?...";
-		 dialogue[1] = "Hi !!!";
-		 dialogue[2] = "J'ai grave les nerfs, c'st grav la, il a une  prime sur la \nrecherche du tresor, \ngar help moi";
-		 dialogue[3] = "crache le morceau, que se passe t'il.... ?";
-		 dialogue[4] = "je veux trouver le tresor...";
+		 dialogue[0] = "Un lion dormait paisiblement dans la savane lorsqu’un petit rat, en jouant, lui courut sur le nez. Enragé, le lion attrapa le rat dans ses griffes.\r\n"
+		 		+ "« Pourquoi ne devrais-je pas te dévorer ? » rugit-il.\r\n"
+		 		+ "Le rat répondit : « Si tu me laisses vivre, je te rendrai service un jour. »\r\n"
+		 		+ "Le lion éclata de rire : « Comment un si petit être pourrait-il aider un roi ? » Mais, amusé, il relâcha le rat.\r\n"
+		 		+ "Quelques jours plus tard, le lion fut pris dans un piège. Incapable de se libérer, il rugit de désespoir. Le petit rat, entendant son appel, accourut et rongea les cordes du piège jusqu’à ce que le lion soit libre.\r\n"
+		 		+ "Le lion comprit que même les plus petits peuvent être précieux.";
+		 dialogue[1] = "Un jour, la hyène et le lièvre trouvèrent un arbre rempli de fruits mûrs. Mais l’arbre était si haut qu’ils ne pouvaient pas atteindre les fruits.\r\n"
+		 		+ "Le lièvre dit : « Construisons une tour avec des pierres pour atteindre le sommet. »\r\n"
+		 		+ "La hyène, paresseuse, répondit : « Pourquoi ne pas attendre qu’un vent les fasse tomber ? »\r\n"
+		 		+ "Le lièvre commença seul à empiler les pierres et atteignit les fruits. Pendant qu’il mangeait, la hyène, affamée, lui demanda de partager.\r\n"
+		 		+ "Le lièvre lui lança des fruits pourris et dit : « La patience et le travail nourrissent, mais la paresse laisse le ventre vide. »";
+		 dialogue[2] = "Un oiseau cherchait un endroit pour boire lorsqu’il trouva un étang habité par un crocodile. Le crocodile lui dit :\r\n"
+		 		+ "« Viens, approche, je ne te ferai rien. »\r\n"
+		 		+ "L’oiseau répondit : « Merci, mais je vais boire d’un arbre. »\r\n"
+		 		+ "Le crocodile insista : « Pourquoi douter de moi ? Je suis honnête. »\r\n"
+		 		+ "L’oiseau répliqua : « Ton sourire cache des dents acérées. Mieux vaut être prudent que mort. »\r\n"
+		 		+ "Et l’oiseau s’envola. Peu après, un autre animal fut dévoré par le crocodile.\r\n"
+		 		+ "Ce conte enseigne que la prudence est une forme de sagesse.\r\n"
+		 		+ "\r\n"
+		 		+ "";
+		 dialogue[3] = "crache le morceau, quoi se passe.... ?";
+		 dialogue[4] = "je veux trouver le tresor brother ...";
 //		 dialogue[0] = "Hello, Franc";
 	 }
 	   public void setAction() {

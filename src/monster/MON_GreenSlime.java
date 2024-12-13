@@ -16,8 +16,10 @@ public class MON_GreenSlime extends Entity{
 		type = 2;
 		name = "Green Slime";
 		speed = 1;
-		maxLife = 4;
+		maxLife = 20;
 		life = maxLife;
+		attack = 5;
+		defense = 0;
 		
 		solidArea.x = 3;
 		solidArea.y = 18;
@@ -46,7 +48,9 @@ public class MON_GreenSlime extends Entity{
 		actionLockCounter ++;
 		   if(actionLockCounter == 120) {
 			   Random random = new Random();
+			   
 			   int i = random.nextInt(100)+1; // chosir entre 1 a 100;
+			   
 			   if(i <= 25) {
 				   direction = "up";
 			   }
@@ -61,5 +65,10 @@ public class MON_GreenSlime extends Entity{
 			   }
 			   actionLockCounter = 0;
 		   }
+	}
+	public void damageReaction() {
+		
+		actionLockCounter = 0;
+		direction = gp.player.direction;
 	}
 }

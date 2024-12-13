@@ -5,12 +5,12 @@
 package entity;
 
 import java.awt.AlphaComposite;
-import java.awt.Color;
-import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
+import object.OBJ_Shield_Wood;
+import object.OBJ_Weapon_Normal;
 import projetpoogame.GamePanel;
 import projetpoogame.KeyHandler;
 
@@ -26,8 +26,8 @@ public class Player extends Entity{
     public final int screenX;
     public final int screenY;
 //    public int hasKey = 0;
-    
     int standCounter = 0;
+    public boolean attackCanceled = false;
     
     public Player(GamePanel gp, KeyHandler keyH){
     	
@@ -64,14 +64,30 @@ public class Player extends Entity{
 
 //    	worldX = gp.tilesize * 10;
 //    	worldY = gp.tilesize * 13;
-//    	x = 100;
-//        y = 100;
-        
+
         speed = 4;
         direction = "down";
+        
         // PLAYER STATUS;
+        level = 1;
         maxLife = 6;
         life = maxLife;
+        strenght = 1;
+        dexterity = 1;
+        exp = 0;
+        nextLevelExp = 5;
+        coin = 0;
+        currentWeapon = new OBJ_Weapon_Normal(gp);
+        currentShield = new OBJ_Shield_Wood(gp);
+        attack = getAttack();
+        defense = getDefense();
+    }
+    public int getAttack() {
+    	
+    	return attack = strenght * currentWeapon.attackValue;
+    }
+    public int getDefense() {
+    	return defense = dexterity * currentShield.defenseValue;
     }
     
     public void getPlayerImage() {
@@ -180,6 +196,13 @@ public class Player extends Entity{
     		 		}
     		 	}
     		 	
+    		 	if(keyH.enterPressed == true && attackCanceled == true) {
+    		 		gp.playSE(7);
+    		 		attacking = true;
+    		 		spriteCounter = 0;
+    		 	}
+    		 	
+    		 	attackCanceled = false;
     		 	gp.keyH.enterPressed = false;
     		 			
     	        spriteCounter++;
@@ -256,25 +279,28 @@ public class Player extends Entity{
     }
     public void pickUpObject(int i) {
     	if(i != 999) {
+    		
+//    		aaaaaaaaaaaaaaaaaaaaaaaaaaa
 //    		gp.obj[i] = null;
 //    		String objectName = gp.obj[i].name;
 //    		
-//    		switch(objectName) {
+//    		int hasKey = 0;
+//			switch(objectName) {
 //    		case "key":
 //    			gp.playSE(1);
 //    			hasKey++;
 //    			gp.obj[i] = null;
 ////    				System.out.println("key :"+hasKey);
-//    			gp.ui.showMessage("une cle recue!");
+//    			gp.ui.addMessage("une cle recue!");
 //    			break;
 //    		case "Door":
 //    			if(hasKey > 0) {
 //    				gp.playSE(3);
 //    				gp.obj[i] = null;
 //    				hasKey--;
-//    				gp.ui.showMessage("porte ouverte!");
+//    				gp.ui.addMessage("porte ouverte!");
 //    			}else{
-//    				gp.ui.showMessage("cle manquante!");
+//    				gp.ui.addMessage("cle manquante!");
 //    			}
 ////				System.out.println("key :"+hasKey);
 //				break;
@@ -282,7 +308,7 @@ public class Player extends Entity{
 //    			gp.playSE(2);
 //    			speed += 1;
 //    			gp.obj[i] = null;
-//    			gp.ui.showMessage("Accelerez!");
+//    			gp.ui.addMessage("Accelerez!");
 //    			break;
 //    		case "Chest":
 //    			gp.ui.gameFinished = true;
@@ -290,6 +316,7 @@ public class Player extends Entity{
 //    			gp.playSE(4);
 //    			break;
 //    		}
+//			aaaaaaaaaaaaaaaaaaaaaaaaaaaaa
     	}
     	
     	
@@ -298,22 +325,28 @@ public class Player extends Entity{
     	
     	if(gp.keyH.enterPressed == true) {
     		if(i != 999) {
-
+    			attackCanceled = true;
         			gp.gameState = gp.dialogueState;
             		gp.npc[i].speak();
         		
         	}
     		else {
-        		attacking = true;
-        	}
+    			attacking = true;
+    		}
+  
     	}
     }
     public void contactMonster(int i) {
     	
     	if(i != 999) {
     		if(invincible == false) {
-
-        		life -= 1;
+    			gp.playSE(6);
+    			
+    			int damage = gp.monster[i].attack - defense;
+    			if(damage < 0) {
+    				damage = 0;
+    			}
+        		life -= damage; 
         		invincible = true;
     		}
     	}
@@ -323,11 +356,21 @@ public class Player extends Entity{
     		
     		if(gp.monster[i].invincible == false) {
     			
-    			gp.monster[i].life -= 1;
+    			gp.playSE(5);
+    			
+    			int damage = attack - gp.monster[i].defense;
+    			if(damage < 0) {
+    				damage = 0;
+    			}
+    			gp.monster[i].life -= damage;
+    			gp.ui.addMessage(damage + " damage" );
+    			
     			gp.monster[i].invincible = true;
+    			gp.monster[i].damageReaction();
     			
     			if(gp.monster[i].life <= 0) {
     				gp.monster[i].dying = true;
+    				gp.ui.addMessage("killed the " + gp.monster[i].name + " ¦");
     			}
     		}
     	}

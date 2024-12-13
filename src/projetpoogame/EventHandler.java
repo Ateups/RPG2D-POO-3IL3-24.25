@@ -90,7 +90,8 @@ public class EventHandler {
 	
 	public void damagerPit(int col, int row, int gameState) {
 		gp.gameState = gameState;
-		gp.ui.currentDialogue = "Vous etes tombés dqns un trou !";
+		gp.playSE(6);
+		gp.ui.currentDialogue = "Vous etes tombï¿½s dans un trou !";
 		gp.player.life -= 1; 
 //		eventRect[col][row].eventDone = true;
 		canTouchEvent = false;
@@ -99,7 +100,9 @@ public class EventHandler {
 		
 		if(gp.keyH.enterPressed == true) {
 			gp.gameState = gameState;
-			gp.ui.currentDialogue = "Vous veew de boire de l eau sacrée. \n vos points de vie ont ete restaurés.";
+			gp.player.attackCanceled = true;
+			gp.playSE(2);
+			gp.ui.currentDialogue = "Vous veew de boire de l eau sacrï¿½e. \n vos points de vie ont ete restaurï¿½s.";
 			gp.player.life = gp.player.maxLife;
 		}
 		

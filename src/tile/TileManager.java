@@ -51,33 +51,33 @@ public class TileManager {
 //			setup(8, "sand", false);
 //			setup(9, "sand", false);
 		
-			setup(0, "tree", false);
-			setup(1, "tree", true);
-			setup(2, "tree", true);
-			setup(3, "tree", false);
-			setup(4, "tree", true);
-			setup(5, "tree", false);
-			setup(6, "tree", false);
-			setup(7, "tree", false);
-			setup(8, "tree", false);
-			setup(9, "tree", false);
+			setup(0, "grass", false);
+			setup(1, "grass", true);
+			setup(2, "grass", true);
+			setup(3, "grass", false);
+			setup(4, "grass", true);
+			setup(5, "grass", false);
+			setup(6, "grass", false);
+			setup(7, "grass", false);
+			setup(8, "grass", false);
+			setup(9, "grass", false);
 			
-			setup(10, "sand", false);
-			setup(11, "sand", false);
-			setup(12, "tree", true);
-			setup(13, "tree", true);
-			setup(14, "tree", true);
-			setup(15, "walter", true);
-			setup(16, "walter", true);
-			setup(17, "walter", true);
-			setup(18, "walter", true);
-			setup(19, "tree", true);
-			setup(20, "tree", true);
-			setup(21, "tree", true);
-			setup(22, "tree", true);
-			setup(23, "tree", true);
-			setup(24, "walter", true);
-			setup(25, "walter", true);
+			setup(10, "grass", false);
+			setup(11, "grass01", false);
+			setup(12, "walter00", true);
+			setup(13, "walter01", true);
+			setup(14, "walter02", true);
+			setup(15, "walter03", true);
+			setup(16, "walter04", true);
+			setup(17, "walter05", true);
+			setup(18, "walter06", true);
+			setup(19, "walter07", true);
+			setup(20, "walter08", true);
+			setup(21, "walter09", true);
+			setup(22, "walter10", true);
+			setup(23, "walter11", true);
+			setup(24, "walter12", true);
+			setup(25, "walter13", true);
 			setup(26, "road00", false);
 			setup(27, "road01", false);
 			setup(28, "road02", false);
@@ -93,7 +93,7 @@ public class TileManager {
 			setup(38, "road12", false);
 			setup(39, "earth", false);
 			setup(40, "wall", true);
-			setup(41, "sand", true);
+			setup(41, "tree", true);
 			
 			
 //			tile[1] = new Tile();
